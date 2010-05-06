@@ -196,5 +196,8 @@ complete -f -c git -n '__fish_git_using_command format-patch' -a '(__fish_git_br
 complete -f -c git -n '__fish_git_needs_command' -a submodule -d 'Initialize, update or inspect submodules'
 complete -f -c git -n '__fish_git_using_command submodule' -a 'add status init update summary foreach sync' -d 'Make a GPG-signed tag'
 
+## git whatchanged
+complete -f -c git -n '__fish_git_needs_command' -a whatchanged -d 'Show logs with difference each commit introduces'
+
 ## Aliases (custom user-defined commands)
 complete -c git -n '__fish_git_needs_command' -a '(git config --get-regexp alias | sed -e "s/^alias\.\(\S\+\).*/\1/")' -d 'Alias (user-defined command)'
