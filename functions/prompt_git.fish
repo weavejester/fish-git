@@ -14,7 +14,7 @@ function __fish_git_current_branch
   git describe --contains --all HEAD
 end
 
-function __fish_git_ps1
+function prompt_git 
   if __fish_git_in_working_tree
     if __fish_git_dirty
       set_color red
