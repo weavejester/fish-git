@@ -21,6 +21,6 @@ function __fish_git_ps1
     else
       set_color blue
     end
-    printf "%s%s" (__fish_git_current_branch) (set_color normal)
+    printf " %s%s" (__fish_git_current_branch) (set_color normal)
   end
 end
