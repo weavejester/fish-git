@@ -1,0 +1,26 @@
+## Git PS1 prompt ##
+
+function __fish_git_in_working_tree
+  [ "true" = (git rev-parse --is-inside-work-tree ^ /dev/null; or echo false) ]
+end
+
+function __fish_git_dirty
+  not git diff --no-ext-diff --quiet --exit-code ^ /dev/null
+  or not git diff-index --cached --quiet HEAD ^ /dev/null
+  or count (git ls-files --others --exclude-standard) > /dev/null
+end
+
+function __fish_git_current_branch
+  git describe --contains --all HEAD
+end
+
+function __fish_git_ps1
+  if __fish_git_in_working_tree
+    if __fish_git_dirty
+      set_color red
+    else
+      set_color blue
+    end
+    printf "%s%s" (__fish_git_current_branch) (set_color normal)
+  end
+end
