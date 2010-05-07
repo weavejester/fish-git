@@ -10,9 +10,14 @@ function __fish_git_dirty
   or count (git ls-files --others --exclude-standard) > /dev/null
 end
 
-function __fish_git_current_branch
-  git describe --contains --all HEAD
+function __fish_git_current_head
+  git symbolic-ref HEAD ^ /dev/null
+  or git describe --contains --all HEAD
 end
+
+function __fish_git_current_branch
+  __fish_git_current_head | sed -e "s#^refs/heads/##"
+end 
 
 function prompt_git 
   if __fish_git_in_working_tree
