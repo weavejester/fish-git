@@ -1,7 +1,7 @@
 ## Git PS1 prompt ##
 
 function __fish_git_in_working_tree
-  [ "true" = (git rev-parse --is-inside-work-tree ^ /dev/null; or echo false) ]
+  git rev-parse --is-inside-work-tree >/dev/null ^&1
 end
 
 function __fish_git_dirty
